@@ -9,15 +9,17 @@ interface FileUploadProps {
 
 export const FileUpload = ({ onUpload }: FileUploadProps) => {
     return (
-        <UploadDropzone
-            endpoint="imageUploader"
-            onClientUploadComplete={(res) => {
-                onUpload(res?.[0].url);
-            }}
-            onUploadError={(error: Error) => {
-                console.log(error);
-            }}
-            className="cursor-pointer"
-        />
+        <>
+            <UploadDropzone
+                endpoint="imageUploader"
+                onClientUploadComplete={(res: any) => {
+                    onUpload(res?.[0].url);
+                }}
+                onUploadError={(error: Error) => {
+                    console.log(error);
+                }}
+                className="cursor-pointer"
+            />
+        </>
     )
 }

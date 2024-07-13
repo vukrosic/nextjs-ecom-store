@@ -8,8 +8,4 @@ export default defineSchema({
         price: v.number(),
         imageUrl: v.string(),
     }),
-    users: defineTable({
-        name: v.string(),
-        tokenIdentifier: v.string(),
-    }).index("by_token", ["tokenIdentifier"]),
 });

@@ -81,7 +81,6 @@ export default function EditProduct() {
             console.log({ id: productId, ...productData })
             await updateProduct({ id: productId, ...productData });
             alert('Product updated successfully!');
-            // router.push('/admin/manage-products');
         } catch (err) {
             setError('Failed to update product. Please try again.');
             console.error(err);
