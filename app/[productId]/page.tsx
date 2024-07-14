@@ -7,6 +7,9 @@ import Image from 'next/image';
 import { Id } from '@/convex/_generated/dataModel';
 import { useCartStore } from '@/lib/store/useCartStore';
 import { Button } from '@/components/ui/button';
+import Reviews from '@/components/Reviews';
+import { SizeSelect } from './_components/SelectSize';
+import { FooterProduct } from '@/components/FooterProduct';
 
 interface Product {
     _id: string;
@@ -31,9 +34,16 @@ export default function ProductPage({ params }: { params: { productId: Id<"produ
 
     const { addItem, items, removeItem } = useCartStore();
 
+    const reviews = useQuery(api.reviews.getByProduct, { productId: params.productId });
+
     const pay = useAction(api.stripe.pay);
 
-    if (!product) return <div>Loading...</div>;
+    if (!product || !reviews) return <div>Loading...</div>;
+
+    const handleSizeSelect = (size: string) => {
+        setSelectedSize(size);
+    }
+
 
     const handleBuyNow = async () => {
         try {
@@ -92,8 +102,8 @@ export default function ProductPage({ params }: { params: { productId: Id<"produ
     };
 
     return (
-        <div className="min-h-screen  bg-gray-100 p-8">
-            <div className="max-w-7xl h-[700px] mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="min-h-screen bg-gray-100 p-8 space-y-10 pt-9 mt-9">
+            <div className="max-w-7xl h-[700px] mx-auto bg-white rounded-lg shadow-lg overflow-hidden pt-9 mt-9">
                 <div className="flex flex-col md:flex-row">
                     <div className="md:w-1/2 p-8">
                         <div className="relative w-full h-full max-h-[530px]">
@@ -160,32 +170,24 @@ export default function ProductPage({ params }: { params: { productId: Id<"produ
                                 ))}
                             </div>
                         </div>
-                        <div className="mb-4">
-                            <h2 className="text-xl font-semibold mb-2">Sizes</h2>
-                            <div className="flex flex-wrap gap-2">
-                                {product.sizes.map((size, index) => (
-                                    <button
-                                        key={index}
-                                        onClick={() => setSelectedSize(size)}
-                                        className={`px-4 py-2 border rounded-md transition-colors duration-300 ${selectedSize === size
-                                            ? 'bg-blue-500 text-white'
-                                            : highlight
-                                                ? 'border-red-500 text-red-500'
-                                                : 'border-gray-300 hover:bg-gray-100'
-                                            }`}
-                                    >
-                                        {size}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
+                        <SizeSelect
+                            onSizeSelect={handleSizeSelect}
+                            sizes={product.sizes}
+                        />
                         <div className="mb-4">
                             <h2 className="text-xl font-semibold mb-2">Quantity</h2>
                             <input
                                 type="number"
                                 min="1"
                                 value={quantity}
-                                onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value)))}
+                                onChange={(e) =>
+                                    setQuantity(Math.min(
+                                        Math.max(
+                                            1, parseInt(e.target.value)
+                                        ),
+                                        8)
+                                    )
+                                }
                                 className="w-20 px-2 py-1 border rounded-md"
                             />
                         </div>
@@ -216,6 +218,8 @@ export default function ProductPage({ params }: { params: { productId: Id<"produ
                     </div>
                 </div>
             </div>
+            <Reviews productId={params.productId} />
+            <FooterProduct />
         </div >
     );
 }

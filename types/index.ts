@@ -15,3 +15,13 @@ export interface CartItem {
     price: number;
     quantity: number;
 }
+
+
+export interface Review {
+    _id: Id<"reviews">;
+    productId: Id<"products">;
+    rating: number;
+    comment: string;
+    createdAt: number;
+    username: string;
+}

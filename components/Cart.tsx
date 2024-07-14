@@ -12,7 +12,7 @@ import { api } from '@/convex/_generated/api';
 export function CartSheet() {
     const { items, removeItem, updateQuantity, updateSize, clearCart } = useCartStore();
 
-    const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+    const totalItems = items.reduce((sum, item) => sum + 1, 0);
     const totalPrice = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
     const pay = useAction(api.stripe.pay);

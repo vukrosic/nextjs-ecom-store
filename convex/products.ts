@@ -85,11 +85,6 @@ export const update = mutation({
 export const get = query({
     args: { id: v.id("products") },
     handler: async (ctx, args) => {
-        const identity = await ctx.auth.getUserIdentity();
-
-        if (!identity) {
-            throw new Error("Unauthorized");
-        }
         const product = await ctx.db.get(args.id);
         return product;
     },

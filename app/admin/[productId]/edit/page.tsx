@@ -22,80 +22,80 @@ interface ProductData {
 }
 
 export default function EditProduct() {
-    const params = useParams();
-    const router = useRouter();
-    const productId = params.productId as Id<"products">;
+    // const params = useParams();
+    // const router = useRouter();
+    // const productId = params.productId as Id<"products">;
 
-    const [productData, setProductData] = useState<ProductData>({
-        title: '',
-        description: '',
-        price: 0,
-        imageUrl: '',
-    });
+    // const [productData, setProductData] = useState<ProductData>({
+    //     title: '',
+    //     description: '',
+    //     price: 0,
+    //     imageUrl: '',
+    // });
 
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-    const [isFormValid, setIsFormValid] = useState(false);
+    // const [isSubmitting, setIsSubmitting] = useState(false);
+    // const [error, setError] = useState<string | null>(null);
+    // const [isFormValid, setIsFormValid] = useState(false);
 
-    const updateProduct = useMutation(api.products.update);
-    const product = useQuery(api.products.get, { id: productId });
+    // const updateProduct = useMutation(api.products.update);
+    // const product = useQuery(api.products.get, { id: productId });
 
-    useEffect(() => {
-        if (product) {
-            setProductData({
-                title: product.title,
-                description: product.description,
-                price: product.price,
-                imageUrl: product.imageUrl
-            });
-        }
-    }, [product]);
+    // useEffect(() => {
+    //     if (product) {
+    //         setProductData({
+    //             title: product.title,
+    //             description: product.description,
+    //             price: product.price,
+    //             imageUrl: product.imageUrl
+    //         });
+    //     }
+    // }, [product]);
 
-    useEffect(() => {
-        const { title, description, price, imageUrl } = productData;
-        setIsFormValid(
-            title.trim() !== '' &&
-            description.trim() !== '' &&
-            price > 0 &&
-            imageUrl !== ''
-        );
-    }, [productData]);
+    // useEffect(() => {
+    //     const { title, description, price, imageUrl } = productData;
+    //     setIsFormValid(
+    //         title.trim() !== '' &&
+    //         description.trim() !== '' &&
+    //         price > 0 &&
+    //         imageUrl !== ''
+    //     );
+    // }, [productData]);
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setProductData(prev => ({
-            ...prev,
-            [name]: name === 'price' ? parseFloat(value) : value,
-        }));
-    };
+    // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    //     const { name, value } = e.target;
+    //     setProductData(prev => ({
+    //         ...prev,
+    //         [name]: name === 'price' ? parseFloat(value) : value,
+    //     }));
+    // };
 
-    const onUpload = (url: string) => {
-        setProductData(prev => ({ ...prev, imageUrl: url }));
-    };
+    // const onUpload = (url: string) => {
+    //     setProductData(prev => ({ ...prev, imageUrl: url }));
+    // };
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        setError(null);
-        try {
-            console.log({ id: productId, ...productData })
-            await updateProduct({ id: productId, ...productData });
-            alert('Product updated successfully!');
-        } catch (err) {
-            setError('Failed to update product. Please try again.');
-            console.error(err);
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
+    // const handleSubmit = async (e: React.FormEvent) => {
+    //     e.preventDefault();
+    //     setIsSubmitting(true);
+    //     setError(null);
+    //     try {
+    //         console.log({ id: productId, ...productData })
+    //         await updateProduct({ id: productId, ...productData });
+    //         alert('Product updated successfully!');
+    //     } catch (err) {
+    //         setError('Failed to update product. Please try again.');
+    //         console.error(err);
+    //     } finally {
+    //         setIsSubmitting(false);
+    //     }
+    // };
 
-    if (!product) {
-        return <div className="text-center text-blue-400">Loading...</div>;
-    }
+    // if (!product) {
+    //     return <div className="text-center text-blue-400">Loading...</div>;
+    // }
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-900 to-black flex items-center justify-center p-4">
-            <Card className="w-full max-w-lg bg-blue-950 text-blue-100 shadow-lg shadow-blue-500/50">
+            {/* <Card className="w-full max-w-lg bg-blue-950 text-blue-100 shadow-lg shadow-blue-500/50">
                 <CardHeader>
                     <CardTitle className="text-2xl font-bold text-center text-blue-300">Edit Product</CardTitle>
                     <CardDescription className="text-center text-blue-400">Update the product details</CardDescription>
@@ -173,7 +173,7 @@ export default function EditProduct() {
                         </Button>
                     </form>
                 </CardContent>
-            </Card>
+            </Card> */}
         </div>
     );
 }

@@ -10,17 +10,17 @@ export const Header = () => {
 
     return (
         <header className="fixed top-0 left-0 w-screen z-50 bg-neutral-950 text-neutral-100 p-4">
-            <div className="container mx-auto flex justify-between items-center">
+            <div className="container mx-auto flex items-center space-x-8">
                 <Link href="/" className="flex items-center space-x-2 text-2xl font-bold text-neutral-300 hover:text-neutral-100 transition-colors">
                     <Package className="w-8 h-8" />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-400 to-neutral-200">UniQ</span>
                 </Link>
+                <Link href="/" className="text-neutral-300 hover:text-neutral-100 transition-colors flex items-center">
+                    <Home className="w-5 h-5 mr-1" />
+                    Home
+                </Link>
+                <nav className="flex items-center space-x-6 w-full justify-end">
 
-                <nav className="flex items-center space-x-6">
-                    <Link href="/" className="text-neutral-300 hover:text-neutral-100 transition-colors flex items-center">
-                        <Home className="w-5 h-5 mr-1" />
-                        Home
-                    </Link>
                     {sessionClaims?.metadata.role === "admin" && (
                         <>
                             <Link href="/admin/manage-products" className="text-neutral-300 hover:text-neutral-100 transition-colors flex items-center">

@@ -17,4 +17,16 @@ export default defineSchema({
     tags: defineTable({
         name: v.string(),
     }).index("by_name", ["name"]),
+    reviews: defineTable({
+        productId: v.id("products"),
+        rating: v.number(),
+        comment: v.string(),
+        username: v.string(),
+    }).index("by_product", ["productId"]),
+    tickets: defineTable({
+        name: v.string(),
+        email: v.string(),
+        phone: v.optional(v.string()),
+        message: v.string(),
+    }).index("by_email", ["email"]),
 });

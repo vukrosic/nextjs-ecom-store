@@ -33,7 +33,7 @@ export const useCartStore = create(
                             ),
                         };
                     }
-                    return { items: [...state.items, { ...item, quantity: 1 }] };
+                    return { items: [...state.items, { ...item, quantity: Math.min(item.quantity, 8) }] };
                 }),
             removeItem: (id) =>
                 set((state) => ({
@@ -42,7 +42,7 @@ export const useCartStore = create(
             updateQuantity: (id, quantity) =>
                 set((state) => ({
                     items: state.items.map((i) =>
-                        i.id === id ? { ...i, quantity } : i
+                        i.id === id ? { ...i, quantity: Math.min(quantity, 8) } : i
                     ),
                 })),
             updateSize: (id, size) =>

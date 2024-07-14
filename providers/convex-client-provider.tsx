@@ -27,8 +27,7 @@ export const ConvexClientProvider = ({
                     {children}
                 </Authenticated>
                 <Unauthenticated>
-                    <SignInButton />
-                    <SignUpButton />
+                    {children}
                 </Unauthenticated>
             </ConvexProviderWithClerk>
         </ClerkProvider>

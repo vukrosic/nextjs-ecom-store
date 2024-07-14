@@ -53,7 +53,7 @@ export default function ManageProducts() {
                                     <TableHead className="text-blue-300">Actions</TableHead>
                                 </TableRow>
                             </TableHeader>
-                            <TableBody>
+                            {/* <TableBody>
                                 {products.map((product: Product) => (
                                     <TableRow key={product._id}>
                                         <TableCell className="font-medium text-blue-200">{product.title}</TableCell>
@@ -75,7 +75,7 @@ export default function ManageProducts() {
                                         </TableCell>
                                     </TableRow>
                                 ))}
-                            </TableBody>
+                            </TableBody> */}
                         </Table>
                     )}
                 </CardContent>
