@@ -20,7 +20,7 @@ export const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div>
                         <h3 className="text-lg font-semibold mb-4">About Us</h3>
-                        <p className="text-gray-400">We're passionate about delivering quality fashion that empowers you to express your unique style.</p>
+                        <p className="text-gray-400">We&apos;re passionate about delivering quality fashion that empowers you to express your unique style.</p>
                     </div>
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Quick Links</h3>

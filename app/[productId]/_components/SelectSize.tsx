@@ -111,7 +111,7 @@ export const SizeSelect: React.FC<SizeSelectProps> = ({ sizes, onSizeSelect }) =
                                 </tbody>
                             </table>
                             <p className="mt-4 text-sm text-gray-600">
-                                To find your perfect fit, measure your chest, waist, and hips, and compare them to the chart above. If you're between sizes, we recommend choosing the larger size for a more comfortable fit.
+                                To find your perfect fit, measure your chest, waist, and hips, and compare them to the chart above. If you&apos;re between sizes, we recommend choosing the larger size for a more comfortable fit.
                             </p>
                         </div>
                     </SheetContent>
