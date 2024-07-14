@@ -4,7 +4,18 @@ import { v } from "convex/values";
 
 // Create a new task with the given text
 export const add = mutation({
-    args: { title: v.string(), description: v.string(), price: v.number(), imageUrl: v.string() },
+    args: {
+        title: v.string(),
+        description: v.string(),
+        price: v.number(),
+        discountedPrice: v.optional(v.number()),
+        tags: v.array(v.string()),
+        variants: v.array(v.object({
+            color: v.string(),
+            images: v.array(v.string()),
+        })),
+        sizes: v.array(v.string()),
+    },
     handler: async (ctx, args) => {
         const identity = await ctx.auth.getUserIdentity();
 
@@ -16,7 +27,10 @@ export const add = mutation({
             title: args.title,
             description: args.description,
             price: args.price,
-            imageUrl: args.imageUrl,
+            discountedPrice: args.discountedPrice,
+            tags: args.tags,
+            variants: args.variants,
+            sizes: args.sizes,
         });
         return newProductId;
     },
@@ -36,7 +50,19 @@ export const remove = mutation({
 });
 
 export const update = mutation({
-    args: { id: v.id("products"), title: v.string(), description: v.string(), price: v.number(), imageUrl: v.string() },
+    args: {
+        id: v.id("products"),
+        title: v.string(),
+        description: v.string(),
+        price: v.number(),
+        discountedPrice: v.number(),
+        tags: v.array(v.string()),
+        variants: v.array(v.object({
+            color: v.string(),
+            images: v.array(v.string()),
+        })),
+        sizes: v.array(v.string()),
+    },
     handler: async (ctx, args) => {
         const identity = await ctx.auth.getUserIdentity();
 
@@ -48,7 +74,10 @@ export const update = mutation({
             title: args.title,
             description: args.description,
             price: args.price,
-            imageUrl: args.imageUrl,
+            discountedPrice: args.discountedPrice,
+            tags: args.tags,
+            variants: args.variants,
+            sizes: args.sizes,
         });
     },
 });

@@ -1,13 +1,15 @@
 import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
-import { ShoppingCart, Package, Home, Plus } from "lucide-react";
+import { Package, Home, Plus, ShoppingCart } from "lucide-react";
+import { CartSheet } from "./Cart";
+
 
 export const Header = () => {
     const { sessionClaims } = auth();
 
     return (
-        <header className="bg-neutral-950 text-neutral-100 p-4 shadow-lg shadow-neutral-500/50 bg-">
+        <header className="fixed top-0 left-0 w-screen z-50 bg-neutral-950 text-neutral-100 p-4">
             <div className="container mx-auto flex justify-between items-center">
                 <Link href="/" className="flex items-center space-x-2 text-2xl font-bold text-neutral-300 hover:text-neutral-100 transition-colors">
                     <Package className="w-8 h-8" />
@@ -31,6 +33,7 @@ export const Header = () => {
                             </Link>
                         </>
                     )}
+                    <CartSheet />
                     <UserButton />
                 </nav>
             </div>

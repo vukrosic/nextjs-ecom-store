@@ -6,6 +6,15 @@ export default defineSchema({
         title: v.string(),
         description: v.string(),
         price: v.number(),
-        imageUrl: v.string(),
+        discountedPrice: v.optional(v.number()),
+        tags: v.array(v.string()),
+        variants: v.array(v.object({
+            color: v.string(),
+            images: v.array(v.string()),
+        })),
+        sizes: v.array(v.string()),
     }),
+    tags: defineTable({
+        name: v.string(),
+    }).index("by_name", ["name"]),
 });

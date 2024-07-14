@@ -16,6 +16,7 @@ import type {
 } from "convex/server";
 import type * as products from "../products.js";
 import type * as stripe from "../stripe.js";
+import type * as tags from "../tags.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -28,6 +29,7 @@ import type * as stripe from "../stripe.js";
 declare const fullApi: ApiFromModules<{
   products: typeof products;
   stripe: typeof stripe;
+  tags: typeof tags;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,
