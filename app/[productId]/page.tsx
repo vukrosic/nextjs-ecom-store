@@ -102,8 +102,8 @@ export default function ProductPage({ params }: { params: { productId: Id<"produ
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 p-8 space-y-10 pt-9 mt-9">
-            <div className="max-w-7xl h-[700px] mx-auto bg-white rounded-lg shadow-lg overflow-hidden pt-9 mt-9">
+        <div className="min-h-screen bg-gray-100 p-8 space-y-10 pt-12">
+            <div className="max-w-7xl h-[700px] mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
                 <div className="flex flex-col md:flex-row">
                     <div className="md:w-1/2 p-8">
                         <div className="relative w-full h-full max-h-[530px]">
@@ -120,7 +120,7 @@ export default function ProductPage({ params }: { params: { productId: Id<"produ
                                 <button
                                     key={index}
                                     onClick={() => setSelectedImage(index)}
-                                    className={`flex-shrink-0 w-24 h-24 rounded-md overflow-hidden ${index === selectedImage ? 'ring-2 ring-blue-500' : ''
+                                    className={`flex-shrink-0 w-24 h-24 rounded-md overflow-hidden ${index === selectedImage ? 'ring-2 ring-gray-800' : ''
                                         }`}
                                 >
                                     <Image
@@ -156,7 +156,7 @@ export default function ProductPage({ params }: { params: { productId: Id<"produ
                                     <button
                                         key={index}
                                         onClick={() => handleVariantSelect(index)}
-                                        className={`w-16 h-16 rounded-full overflow-hidden ${index === selectedVariant ? 'ring-2 ring-blue-500' : ''
+                                        className={`w-16 h-16 rounded-full overflow-hidden ${index === selectedVariant ? 'ring-2 ring-gray-800' : ''
                                             }`}
                                     >
                                         <Image
@@ -202,14 +202,14 @@ export default function ProductPage({ params }: { params: { productId: Id<"produ
                                 </button>
                             ) : (
                                 <button
-                                    className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition-colors duration-300"
+                                    className="w-full bg-gray-800 text-white py-3 rounded-md hover:bg-gray-900 transition-colors duration-300"
                                     onClick={handleAddToCart}
                                 >
                                     Add to Cart
                                 </button>
                             )}
                             <button
-                                className="w-full bg-white border-blue-500 border-2 text-blue-500 py-3 rounded-md hover:bg-blue-200 transition-colors duration-300"
+                                className="w-full bg-white border-gray-800 border-2 text-gray-800 py-3 rounded-md hover:bg-blue-200 transition-colors duration-300"
                                 onClick={handleBuyNow}
                             >
                                 Buy Now
