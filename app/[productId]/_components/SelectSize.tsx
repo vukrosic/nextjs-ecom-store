@@ -16,6 +16,8 @@ interface Size {
 interface SizeSelectProps {
     sizes: string[];
     onSizeSelect: (size: string) => void;
+    highlight: boolean;
+    setHighlight: (highlight: boolean) => void;
 }
 
 const sizeGuide: Size[] = [
@@ -41,9 +43,8 @@ const sizeGuide: Size[] = [
     }
 ];
 
-export const SizeSelect: React.FC<SizeSelectProps> = ({ sizes, onSizeSelect }) => {
+export const SizeSelect: React.FC<SizeSelectProps> = ({ sizes, onSizeSelect, highlight, setHighlight }) => {
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
-    const [highlight, setHighlight] = useState(false);
 
     const handleSizeSelect = (size: string) => {
         setSelectedSize(size);
@@ -64,7 +65,7 @@ export const SizeSelect: React.FC<SizeSelectProps> = ({ sizes, onSizeSelect }) =
                             key={index}
                             onClick={() => handleSizeSelect(size)}
                             className={`px-4 py-2 border rounded-md transition-colors duration-300 ${selectedSize === size
-                                ? 'bg-blue-500 text-white'
+                                ? 'bg-gray-800 text-white'
                                 : highlight
                                     ? 'border-red-500 text-red-500'
                                     : 'border-gray-300 hover:bg-gray-100'

@@ -173,6 +173,8 @@ export default function ProductPage({ params }: { params: { productId: Id<"produ
                         <SizeSelect
                             onSizeSelect={handleSizeSelect}
                             sizes={product.sizes}
+                            highlight={highlight}
+                            setHighlight={setHighlight}
                         />
                         <div className="mb-4">
                             <h2 className="text-xl font-semibold mb-2">Quantity</h2>
@@ -209,7 +211,7 @@ export default function ProductPage({ params }: { params: { productId: Id<"produ
                                 </button>
                             )}
                             <button
-                                className="w-full bg-white border-gray-800 border-2 text-gray-800 py-3 rounded-md hover:bg-blue-200 transition-colors duration-300"
+                                className="w-full bg-white border-gray-800 border-2 text-gray-800 py-3 rounded-md hover:bg-gray-300 transition-colors duration-300"
                                 onClick={handleBuyNow}
                             >
                                 Buy Now
